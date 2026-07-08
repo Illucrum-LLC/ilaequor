@@ -47,7 +47,7 @@
   "@type": "SoftwareApplication",
   "name": "Ilaequor",
   "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Android, iOS",
+  "operatingSystem": "Web",
   "description": "A tank-side dosing and testing app for planted-aquarium keepers who dose fertilizers. It times reagent tests, models the tank's nutrient state between tests, and recommends next-period doses from your own fertilizer stocks.",
   "url": "https://ilaequor.com/",
   "publisher": {
@@ -80,11 +80,11 @@
   <h1>Planted tank dosing, driven by your <em>real</em> water tests.</h1>
   <p>Ilaequor times your reagent tests one-handed and models where your tank actually sits between tests. Then it works out your next doses from the fertilizers you already dose.</p>
   <form>
+    <p>We only use this to send you development updates about Ilaequor. No spam; unsubscribe anytime.</p>
     <div>
       <label for="email-hero">Email</label>
       <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
     </div>
-    <p>We only use this to send you development updates about Ilaequor. No spam; unsubscribe anytime.</p>
     <div>
       <input id="consent-hero" type="checkbox" name="consent" required>
       <label for="consent-hero">I agree to receive development updates by email and accept the <a href="/legal/privacy">Privacy Policy</a>.</label>
@@ -93,17 +93,7 @@
     <button type="submit">Get development updates</button>
     <p>Free to join. No spam; leave anytime.</p>
   </form>
-  <img src="/assets/img/hero-test-view.webp" alt="Ilaequor Test view, showing large tap targets for each water test with reaction countdown timers running.">
 </header>
-<main>
-<section id="trust">
-  <p>
-    <mark>Built by Illucrum</mark>
-    <mark>Based on the GEN nutrient-ratio method</mark>
-    <mark>Works with the fertilizers you already dose</mark>
-  </p>
-  <small>Currently in active development.</small>
-</section>
 <section id="the-problem">
   <header>
     <small>01 / The problem</small>
@@ -156,16 +146,8 @@
       <p>A two-week test run stops being a two-hands-and-a-kitchen-timer job. Start a test, let it count down, keep working.</p>
     </li>
     <li>
-      <h3>A modeled running state.</h3>
-      <p>Ilaequor dilutes for your water changes and adds what you dosed, so you know roughly where the tank sits between tests, including the potassium you cannot test reliably.</p>
-    </li>
-    <li>
       <h3>Ratios, not single readings.</h3>
       <p>It tracks elemental N:K and the NO3:PO4 Redfield band against their target ranges, so you manage the balance the method actually cares about, not one nitrate number in isolation.</p>
-    </li>
-    <li>
-      <h3>Doses from your own fertilizers.</h3>
-      <p>Recommendations come in grams and millilitres, computed from your own stock recipes and tank volume. The same math as your spreadsheet, without the spreadsheet.</p>
     </li>
     <li>
       <h3>A logbook that replaces the spreadsheet.</h3>
@@ -173,29 +155,9 @@
     </li>
   </ul>
 </section>
-<section id="who-its-for">
-  <header>
-    <small>04 / Who it's for</small>
-    <h2>Who it's <em>for</em></h2>
-  </header>
-  <h3>For you if</h3>
-  <ul>
-    <li>you run a freshwater planted tank</li>
-    <li>you dose your own fertilizers (KNO3, KH2PO4, K2SO4, and the rest)</li>
-    <li>you use RO or remineralized water</li>
-    <li>you think in numbers and ratios</li>
-  </ul>
-  <h3>Not for you yet if</h3>
-  <ul>
-    <li>you keep a reef tank</li>
-    <li>you only dose commercial all-in-one bottles and never test</li>
-    <li>you want a fish-and-plant encyclopedia</li>
-  </ul>
-  <p>Ilaequor is focused on dosing and testing, not livestock management.</p>
-</section>
 <section id="faq">
   <header>
-    <small>05 / FAQ</small>
+    <small>04 / FAQ</small>
     <h2>Common <em>questions</em></h2>
   </header>
   <details open>
@@ -204,25 +166,25 @@
   </details>
   <details open>
     <summary>Which dosing methods does it support?</summary>
-    <p>The engine is method-agnostic. It tracks levels, ratios, and doses for any fertilizer routine, whether you follow EI (Estimative Index), PPS-Pro, lean dosing, or the GEN ratio method. GEN's N:K and Redfield targets are built in, and you can set your own target ranges.</p>
+    <p>The engine is method-agnostic. It tracks levels, ratios, and doses for any fertilizer routine, whether you follow EI (Estimative Index), PPS-Pro, lean dosing, or the GEN ratio method. GEN's N:K and Redfield targets are built in, and you can set your own target ranges for every element.</p>
   </details>
   <details open>
-    <summary>How is this different from a dosing calculator like Rotala Butterfly?</summary>
-    <p>A calculator gives you one dose in isolation, from numbers you type in that moment. Ilaequor tracks your tank's measured state over time and recommends the next doses based on where the tank actually sits, so the numbers follow your real tank between tests rather than a generic target.</p>
+    <summary>Will the results of the tests be stored?</summary>
+    <p>Yes, we will include a log functionality, so you can see how the situation evolves in time.</p>
   </details>
   <details open>
-    <summary>Is it on iOS or Android?</summary>
-    <p>Ilaequor is coming to mobile first. The launch platform is not finalized yet, so the best way to stay in the loop is to join the development updates list; everyone on it hears which platform is confirmed first.</p>
+    <summary>Which platforms will it be available on?</summary>
+    <p>First we will develop the web application, running only in browsers. But in the future we will create dedicated Android and iOS applications.</p>
   </details>
   <details open>
-    <summary>Is it free?</summary>
-    <p>Joining the development updates list is free. Pricing after launch is not set yet. Anyone who joins now will hear the details before anything changes, with no obligation to continue.</p>
+    <summary>Will it be free?</summary>
+    <p>The pricing is not set yet, but we are planning to offer a free plan.</p>
   </details>
   <p><a href="/faq">Read all questions</a></p>
 </section>
 <section id="early-access">
   <header>
-    <small>06 / Development updates</small>
+    <small>05 / Development updates</small>
     <h2>Be the first to know when Ilaequor <em>launches</em>.</h2>
     <p>Ilaequor is in active development. Join the list and you will get updates as it's built, plus which platform launches first.</p>
   </header>
@@ -246,7 +208,7 @@
   <section>
     <p><strong>Ilaequor by Illucrum</strong></p>
     <p>Tank-side dosing and testing for planted aquariums.</p>
-    <p>ill-AY-kwor</p>
+    <p>{{l.structure.footer.pronunciation}}</p>
   </section>
   <section>
     <h5>Product</h5>
