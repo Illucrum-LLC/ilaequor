@@ -109,18 +109,18 @@
 
 /* ─── 1. CUSTOM PROPERTIES ────────────────────────────────── */
 :root {
-  --green: #006bc9;
-  --green-dim: #0056a3;
-  --green-glow: rgba(0, 107, 201, 0.15);
-  --green-glow-2: rgba(0, 107, 201, 0.3);
-  --green-glow-3: rgba(0, 107, 201, 0.05);
+  --green: #9ccfed;
+  --green-dim: #75b2d5;
+  --green-glow: rgba(195, 233, 255, 0.15);
+  --green-glow-2: rgba(195, 233, 255, 0.3);
+  --green-glow-3: rgba(195, 233, 255, 0.05);
 
   /* Light (default) */
-  --bg: #f5f0f5;
-  --bg-alt: #efeaef;
+  --bg: #f9fdff;
+  --bg-alt: #e5f6ff;
   --bg-nav: rgba(245, 240, 245, 0.92);
   --surface: #ffffff;
-  --surface2: #f0f0eb;
+  --surface2: #f0ebf0;
   --border: rgba(0, 0, 0, 0.08);
   --text: #111111;
   --text-muted: #555555;
