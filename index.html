@@ -8,7 +8,31 @@
 <meta property="og:site_name" content="Ilaequor by Illucrum">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Google Tag Manager container (GTM + GA4, Consent Mode v2) is injected here at build/deploy time. Not added in fragments; see CLAUDE.md Section 6.3 and Section 22. -->
+<!-- Consent Mode v2 defaults: must run before the GTM container loads. GA4 is
+     configured as a tag inside GTM, not loaded separately here. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("consent", "default", {
+  analytics_storage: "denied",
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+  wait_for_update: 500
+});
+</script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-TVSCB94C');</script>
+<!-- End Google Tag Manager -->
+<script src="/static/js/consent.js" defer></script>
+<script src="/static/js/form.js" defer></script>
 <title>Planted Tank Dosing & Water Test App | Ilaequor</title>
 <meta name="description" content="Ilaequor turns each water test into next-period dosing. Track your planted tank's real nutrient levels, N:K and phosphate, from your own fertilizers.">
 <link rel="canonical" href="https://ilaequor.com/">
@@ -68,19 +92,21 @@
   <small>For freshwater planted tanks dosed with fertilizers</small>
   <h1>Planted tank dosing, driven by your <em>real</em> water tests.</h1>
   <p>Ilaequor times your reagent tests one-handed and models where your tank actually sits between tests. Then it works out your next doses from the fertilizers you already dose.</p>
-  <form>
+  <form data-waitlist-form>
     <p>We only use this to send you development updates about Ilaequor. No spam; unsubscribe anytime.</p>
     <div>
       <label for="email-hero">Email</label>
-      <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="email-hero-error">
+      <p id="email-hero-error" hidden>That email doesn't look right. Mind checking it?</p>
     </div>
     <div>
       <input id="consent-hero" type="checkbox" name="consent" required>
       <label for="consent-hero">I agree to receive development updates by email and accept the <a href="/legal/privacy">Privacy Policy</a>.</label>
     </div>
     <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
-    <button type="submit">Get development updates</button>
+    <button type="submit" data-loading-label="Adding you...">Get development updates</button>
     <p>Free to join. No spam; leave anytime.</p>
+    <p role="status" hidden>You're on the list. We'll email you with development updates, including which platform launches first.</p>
   </form>
 </header>
 <main>
@@ -89,8 +115,8 @@
     <small>01 / The problem</small>
     <h2>Testing a planted tank shouldn't mean juggling timers with <em>wet hands</em>.</h2>
     <p>Reagents keep developing while you are still adding the next one, so you end up watching three timers with wet hands. Afterwards you re-derive doses in a spreadsheet, chase a single nitrate number, and guess at potassium you cannot reliably test. Two weeks later, you are not sure last time's dose moved anything at all.</p>
+    <p>Ilaequor closes that loop. It runs the timers, models where the tank really sits, and turns each session into your next set of doses.</p>
   </header>
-  <p>Ilaequor closes that loop. It runs the timers, models where the tank really sits, and turns each session into your next set of doses.</p>
 </section>
 <section id="how-it-works">
   <header>
@@ -178,10 +204,11 @@
     <h2>Be the first to know when Ilaequor <em>launches</em>.</h2>
     <p>Ilaequor is in active development. Join the list and you will get updates as it's built, plus which platform launches first.</p>
   </header>
-  <form>
+  <form data-waitlist-form>
     <div>
       <label for="email-cta">Email</label>
-      <input id="email-cta" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <input id="email-cta" type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="email-cta-error">
+      <p id="email-cta-error" hidden>That email doesn't look right. Mind checking it?</p>
     </div>
     <p>We only use this to send you development updates about Ilaequor. No spam; unsubscribe anytime.</p>
     <div>
@@ -189,11 +216,11 @@
       <label for="consent-cta">I agree to receive development updates by email and accept the <a href="/legal/privacy">Privacy Policy</a>.</label>
     </div>
     <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
-    <button type="submit">Get development updates</button>
+    <button type="submit" data-loading-label="Adding you...">Get development updates</button>
     <p>Free to join. No spam, and one click to leave.</p>
+    <p role="status" hidden>You're on the list. We'll email you with development updates, including which platform launches first.</p>
   </form>
 </section>
-</main>
 </main>
 <footer>
   <section>
@@ -218,7 +245,7 @@
   <small>© Ilaequor by Illucrum 2026</small>
 </footer>
 
-<div class="ic-consent" hidden>
+<div class="ic-consent" data-consent-banner hidden aria-hidden="true">
   <div class="ic-consent__panel">
     <p class="ic-consent__eyebrow">Cookies</p>
     <p class="ic-consent__title">We use a couple of cookies</p>
@@ -228,7 +255,7 @@
       <button type="button" class="ic-consent__btn-ghost" data-consent-reject>Necessary only</button>
       <button type="button" class="ic-consent__btn-ghost" data-consent-open-prefs>Manage</button>
     </div>
-    <div class="ic-consent__prefs" hidden>
+    <div class="ic-consent__prefs" data-consent-prefs hidden>
       <div class="ic-consent__pref">
         <label class="ic-consent__pref-label" for="consent-necessary">Necessary</label>
         <input class="ic-consent__toggle" type="checkbox" id="consent-necessary" checked disabled>
@@ -236,12 +263,17 @@
       </div>
       <div class="ic-consent__pref">
         <label class="ic-consent__pref-label" for="consent-analytics">Analytics</label>
-        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics">
+        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics" data-consent-toggle="analytics">
         <p class="ic-consent__pref-desc">Helps us understand how visitors use the site (Google Analytics 4).</p>
       </div>
       <button type="button" class="ic-consent__btn" data-consent-save>Save preferences</button>
     </div>
   </div>
 </div>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVSCB94C" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </body>
 </html>

@@ -8,7 +8,31 @@
 <meta property="og:site_name" content="Ilaequor by Illucrum">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Google Tag Manager container (GTM + GA4, Consent Mode v2) is injected here at build/deploy time. Not added in fragments; see CLAUDE.md Section 6.3 and Section 22. -->
+<!-- Consent Mode v2 defaults: must run before the GTM container loads. GA4 is
+     configured as a tag inside GTM, not loaded separately here. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("consent", "default", {
+  analytics_storage: "denied",
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+  wait_for_update: 500
+});
+</script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-TVSCB94C');</script>
+<!-- End Google Tag Manager -->
+<script src="/static/js/consent.js" defer></script>
+<script src="/static/js/form.js" defer></script>
 <title>Privacy Policy | Ilaequor</title>
 <meta name="description" content="How Ilaequor by Illucrum collects, uses, and protects the email address you share to join the development updates list.">
 <link rel="canonical" href="https://ilaequor.com/legal/privacy">
@@ -31,14 +55,14 @@
   <small>Legal · Privacy</small>
   <h1>Privacy <em>policy</em></h1>
   <p>
-    Effective: [YYYY-MM-DD]<br>
-    Last updated: [YYYY-MM-DD]<br>
-    Controller: Illucrum LLC, 5900 Balcones Drive 21473, Austin TX, 78731-4257<br>
+    Effective: 2026/07/08<br>
+    Last updated: 2026/07/08<br>
+    Controller: Illucrum LLC, 5900 Balcones Drive 21473, Austin TX, 78731<br>
     Contact: <a href="mailto:szymon.kokot@illucrum.com">szymon.kokot@illucrum.com</a>
   </p>
+  <p>Ilaequor is a product of Illucrum LLC ("we", "us"). This policy explains what personal data the Ilaequor website collects, why, and what you can do about it. It covers the marketing site at ilaequor.com only. When the Ilaequor app launches, a fuller policy will cover the data it stores.</p>
 </header>
 <main>
-  <p>Ilaequor is a product of Illucrum LLC ("we", "us"). This policy explains what personal data the Ilaequor website collects, why, and what you can do about it. It covers the marketing site at ilaequor.com only. When the Ilaequor app launches, a fuller policy will cover the data it stores.</p>
   <section id="what-we-collect">
     <h2>What we collect</h2>
     <p>Right now, the site collects two things. First, the email address you enter to join the development updates list, along with your confirmation that you agree to receive those emails. Second, standard website analytics (for example, which pages are viewed) through Google Analytics, but only if you accept analytics cookies in our consent banner. We do not ask for your name, address, or payment details, because there is nothing to buy yet.</p>
@@ -95,7 +119,7 @@
   <small>© Ilaequor by Illucrum 2026</small>
 </footer>
 
-<div class="ic-consent" hidden>
+<div class="ic-consent" data-consent-banner hidden aria-hidden="true">
   <div class="ic-consent__panel">
     <p class="ic-consent__eyebrow">Cookies</p>
     <p class="ic-consent__title">We use a couple of cookies</p>
@@ -105,7 +129,7 @@
       <button type="button" class="ic-consent__btn-ghost" data-consent-reject>Necessary only</button>
       <button type="button" class="ic-consent__btn-ghost" data-consent-open-prefs>Manage</button>
     </div>
-    <div class="ic-consent__prefs" hidden>
+    <div class="ic-consent__prefs" data-consent-prefs hidden>
       <div class="ic-consent__pref">
         <label class="ic-consent__pref-label" for="consent-necessary">Necessary</label>
         <input class="ic-consent__toggle" type="checkbox" id="consent-necessary" checked disabled>
@@ -113,12 +137,17 @@
       </div>
       <div class="ic-consent__pref">
         <label class="ic-consent__pref-label" for="consent-analytics">Analytics</label>
-        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics">
+        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics" data-consent-toggle="analytics">
         <p class="ic-consent__pref-desc">Helps us understand how visitors use the site (Google Analytics 4).</p>
       </div>
       <button type="button" class="ic-consent__btn" data-consent-save>Save preferences</button>
     </div>
   </div>
 </div>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVSCB94C" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </body>
 </html>

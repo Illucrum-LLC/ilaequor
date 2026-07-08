@@ -8,7 +8,31 @@
 <meta property="og:site_name" content="Ilaequor by Illucrum">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Google Tag Manager container (GTM + GA4, Consent Mode v2) is injected here at build/deploy time. Not added in fragments; see CLAUDE.md Section 6.3 and Section 22. -->
+<!-- Consent Mode v2 defaults: must run before the GTM container loads. GA4 is
+     configured as a tag inside GTM, not loaded separately here. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("consent", "default", {
+  analytics_storage: "denied",
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+  wait_for_update: 500
+});
+</script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-TVSCB94C');</script>
+<!-- End Google Tag Manager -->
+<script src="/static/js/consent.js" defer></script>
+<script src="/static/js/form.js" defer></script>
 <title>Ilaequor FAQ: Planted Tank Dosing App Questions</title>
 <meta name="description" content="How Ilaequor works with your fertilizers, which dosing methods it supports, what tests you need, what happens to your data, and pricing while it's in development.">
 <link rel="canonical" href="https://ilaequor.com/faq">
@@ -120,10 +144,11 @@
     <h2>Still deciding?</h2>
     <p>Join the development updates list and be the first to try Ilaequor when it's ready.</p>
   </header>
-  <form>
+  <form data-waitlist-form>
     <div>
       <label for="email-faq-cta">Email</label>
-      <input id="email-faq-cta" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <input id="email-faq-cta" type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="email-faq-cta-error">
+      <p id="email-faq-cta-error" hidden>That email doesn't look right. Mind checking it?</p>
     </div>
     <p>We only use this to send you development updates about Ilaequor. No spam; unsubscribe anytime.</p>
     <div>
@@ -131,8 +156,9 @@
       <label for="consent-faq-cta">I agree to receive development updates by email and accept the <a href="/legal/privacy">Privacy Policy</a>.</label>
     </div>
     <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
-    <button type="submit">Get development updates</button>
+    <button type="submit" data-loading-label="Adding you...">Get development updates</button>
     <p>Just development updates. No spam.</p>
+    <p role="status" hidden>You're on the list. We'll email you with development updates, including which platform launches first.</p>
   </form>
 </section>
 </main>
@@ -159,7 +185,7 @@
   <small>© Ilaequor by Illucrum 2026</small>
 </footer>
 
-<div class="ic-consent" hidden>
+<div class="ic-consent" data-consent-banner hidden aria-hidden="true">
   <div class="ic-consent__panel">
     <p class="ic-consent__eyebrow">Cookies</p>
     <p class="ic-consent__title">We use a couple of cookies</p>
@@ -169,7 +195,7 @@
       <button type="button" class="ic-consent__btn-ghost" data-consent-reject>Necessary only</button>
       <button type="button" class="ic-consent__btn-ghost" data-consent-open-prefs>Manage</button>
     </div>
-    <div class="ic-consent__prefs" hidden>
+    <div class="ic-consent__prefs" data-consent-prefs hidden>
       <div class="ic-consent__pref">
         <label class="ic-consent__pref-label" for="consent-necessary">Necessary</label>
         <input class="ic-consent__toggle" type="checkbox" id="consent-necessary" checked disabled>
@@ -177,12 +203,17 @@
       </div>
       <div class="ic-consent__pref">
         <label class="ic-consent__pref-label" for="consent-analytics">Analytics</label>
-        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics">
+        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics" data-consent-toggle="analytics">
         <p class="ic-consent__pref-desc">Helps us understand how visitors use the site (Google Analytics 4).</p>
       </div>
       <button type="button" class="ic-consent__btn" data-consent-save>Save preferences</button>
     </div>
   </div>
 </div>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVSCB94C" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </body>
 </html>
