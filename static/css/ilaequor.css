@@ -1400,11 +1400,15 @@ main.about > section:first-of-type > div {
          <input id="email-hero" type="email" name="email" placeholder="you@example.com" required>
          <p>inline error text (hidden unless invalid)</p>
        </div>
+       <div>                          consent field group
+         <input id="consent-hero" type="checkbox" name="consent" required>
+         <label for="consent-hero">consent copy, with a link to /legal/privacy</label>
+       </div>
        <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
-       <button type="submit">Get early access</button>
+       <button type="submit">Get development updates</button>
        <p>privacy / reassurance line</p>
      </form>
-   Two forms exist on the home page (hero + final CTA) sharing this markup. */
+   Three forms share this markup: home hero, home final CTA, FAQ CTA. */
 header > form,
 section > form {
   width: 100%;
@@ -1495,6 +1499,42 @@ section > form input[name="website"] {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Consent checkbox: a real field, so (unlike the visually-hidden email
+   label above) its label must stay visible and readable. */
+header > form div:has(input[type="checkbox"]),
+section > form div:has(input[type="checkbox"]) {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+header > form input[type="checkbox"],
+section > form input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15rem;
+  accent-color: var(--green);
+}
+header > form div:has(input[type="checkbox"]) label,
+section > form div:has(input[type="checkbox"]) label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+header > form div:has(input[type="checkbox"]) label a,
+section > form div:has(input[type="checkbox"]) label a {
+  color: var(--text-dim);
+  text-decoration: underline;
 }
 
 /* Inline error message, shown beside/below the field. */
