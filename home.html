@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:site_name" content="Ilaequor by Illucrum">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Tag Manager container (GTM + GA4, Consent Mode v2) is injected here at build/deploy time. Not added in fragments; see CLAUDE.md Section 6.3 and Section 22. -->
+<title>Planted Tank Dosing & Water Test App | Ilaequor</title>
+<meta name="description" content="Ilaequor turns each water test into next-period dosing. Track your planted tank's real nutrient levels, N:K and phosphate, from your own dry salts.">
+<link rel="canonical" href="https://ilaequor.com/">
+<meta property="og:title" content="Planted Tank Dosing & Water Test App | Ilaequor">
+<meta property="og:description" content="Ilaequor turns each water test into next-period dosing for planted tanks dosed with dry salts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ilaequor.com/">
+<meta property="og:image" content="/assets/img/og-home.jpg">
+<link rel="alternate" hreflang="en" href="https://ilaequor.com/">
+<link rel="alternate" hreflang="x-default" href="https://ilaequor.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Illucrum",
+  "legalName": "Illucrum LLC",
+  "url": "https://illucrum.com",
+  "email": "szymon.kokot@illucrum.com",
+  "telephone": "+15122035993",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5900 Balcones Drive 21473",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "postalCode": "78731-4257",
+    "addressCountry": "US"
+  },
+  "brand": { "@type": "Brand", "name": "Ilaequor" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Ilaequor",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android, iOS",
+  "description": "A tank-side dosing and testing app for planted-aquarium keepers who dose dry salts. It times reagent tests, models the tank's nutrient state between tests, and recommends next-period doses from your own salt stocks.",
+  "url": "https://ilaequor.com/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Illucrum",
+    "url": "https://illucrum.com"
+  }
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="/">Ilaequor</a>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>
+  <div>
+    <button type="button" data-theme-toggle aria-label="Toggle dark mode">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1Z" fill="currentColor"></path>
+      </svg>
+    </button>
+    <button type="button" data-scroll-to="early-access">Get early access</button>
+  </div>
+</nav>
+<header id="hero">
+  <small>For freshwater planted tanks dosed with dry salts</small>
+  <h1>Planted tank dosing, driven by your <em>real</em> water tests.</h1>
+  <p>Ilaequor times your reagent tests one-handed and models where your tank actually sits between tests. Then it works out your next doses from the dry salts you already dose.</p>
+  <form>
+    <div>
+      <label for="email-hero">Email</label>
+      <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    </div>
+    <p>We only use this to email you about early access. No spam; unsubscribe anytime.</p>
+    <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
+    <button type="submit">Get early access</button>
+    <p>Free during the beta. No spam; leave anytime.</p>
+  </form>
+  <img src="/assets/img/hero-test-view.webp" alt="Ilaequor Test view, showing large tap targets for each water test with reaction countdown timers running.">
+</header>
+<main>
+<section id="trust">
+  <p>
+    <mark>Built by Illucrum</mark>
+    <mark>Based on the GEN nutrient-ratio method</mark>
+    <mark>Works with the dry salts you already dose</mark>
+  </p>
+  <small>Currently in private beta.</small>
+</section>
+<section id="the-problem">
+  <header>
+    <small>01 / The problem</small>
+    <h2>Testing a planted tank shouldn't mean juggling timers with <em>wet hands</em>.</h2>
+    <p>Reagents keep developing while you are still adding the next one, so you end up watching three timers with wet hands. Afterwards you re-derive doses in a spreadsheet, chase a single nitrate number, and guess at potassium you cannot reliably test. Two weeks later, you are not sure last time's dose moved anything at all.</p>
+  </header>
+  <p>Ilaequor closes that loop. It runs the timers, models where the tank really sits, and turns each session into your next set of doses.</p>
+</section>
+<section id="how-it-works">
+  <header>
+    <small>02 / How it works</small>
+    <h2>How Ilaequor <em>works</em></h2>
+    <p>Set the tank up once. After that, every two-week session follows the same four steps.</p>
+  </header>
+  <ol>
+    <li>
+      <div>
+        <h3>Set up your tank</h3>
+        <p>Enter your net volume, your RO (reverse osmosis) water-change schedule, and the dry-salt stocks you dose. You do this once.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Run the session</h3>
+        <p>At the tank, tap a test to start its countdown. Run several at once, in any order; the app follows your pace, not a fixed sequence.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Enter each reading</h3>
+        <p>As each test develops, type the value. Ilaequor shows it in context: above or below target, better or worse than last session, and a rough ETA to target.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Get your next doses</h3>
+        <p>Review the tank's modeled state and its ratios, elemental N:K (nitrogen to potassium) and the NO3:PO4 Redfield band (nitrate to phosphate), then accept or reject the next-period dose recommendations in grams and millilitres.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+<section id="what-you-get">
+  <header>
+    <small>03 / What you get</small>
+    <h2>What you <em>get</em></h2>
+  </header>
+  <ul>
+    <li>
+      <h3>One-handed session timers.</h3>
+      <p>A two-week test run stops being a two-hands-and-a-kitchen-timer job. Start a test, let it count down, keep working.</p>
+    </li>
+    <li>
+      <h3>A modeled running state.</h3>
+      <p>Ilaequor dilutes for your water changes and adds what you dosed, so you know roughly where the tank sits between tests, including the potassium you cannot test reliably.</p>
+    </li>
+    <li>
+      <h3>Ratios, not single readings.</h3>
+      <p>It tracks elemental N:K and the NO3:PO4 Redfield band against their target ranges, so you manage the balance the method actually cares about, not one nitrate number in isolation.</p>
+    </li>
+    <li>
+      <h3>Doses from your own salts.</h3>
+      <p>Recommendations come in grams and millilitres, computed from your own stock recipes and tank volume. The same math as your spreadsheet, without the spreadsheet.</p>
+    </li>
+    <li>
+      <h3>A logbook that replaces the spreadsheet.</h3>
+      <p>Every session is saved, with history and trends you can scan across weeks.</p>
+    </li>
+  </ul>
+</section>
+<section id="who-its-for">
+  <header>
+    <small>04 / Who it's for</small>
+    <h2>Who it's <em>for</em></h2>
+  </header>
+  <h3>For you if</h3>
+  <ul>
+    <li>you run a freshwater planted tank</li>
+    <li>you dose your own dry salts (KNO3, KH2PO4, K2SO4, and the rest)</li>
+    <li>you use RO or remineralized water</li>
+    <li>you think in numbers and ratios</li>
+  </ul>
+  <h3>Not for you yet if</h3>
+  <ul>
+    <li>you keep a reef tank</li>
+    <li>you only dose commercial all-in-one bottles and never test</li>
+    <li>you want a fish-and-plant encyclopedia</li>
+  </ul>
+  <p>Ilaequor is focused on dosing and testing, not livestock management.</p>
+</section>
+<section id="faq">
+  <header>
+    <small>05 / FAQ</small>
+    <h2>Common <em>questions</em></h2>
+  </header>
+  <details open>
+    <summary>Do I have to switch fertilizers to use Ilaequor?</summary>
+    <p>No. Ilaequor works from the dry salts you already dose. You enter each stock once, the salt, the grams, and the volume of water you dissolved it in, and the app does the dosing math from your tank volume. There is nothing new to buy and no product line to switch to.</p>
+  </details>
+  <details open>
+    <summary>Which dosing methods does it support?</summary>
+    <p>The engine is method-agnostic. It tracks levels, ratios, and doses for any dry-salt routine, whether you follow EI (Estimative Index), PPS-Pro, lean dosing, or the GEN ratio method. GEN's N:K and Redfield targets are built in, and you can set your own target ranges.</p>
+  </details>
+  <details open>
+    <summary>How is this different from a dosing calculator like Rotala Butterfly?</summary>
+    <p>A calculator gives you one dose in isolation, from numbers you type in that moment. Ilaequor tracks your tank's measured state over time and recommends the next doses based on where the tank actually sits, so the numbers follow your real tank between tests rather than a generic target.</p>
+  </details>
+  <details open>
+    <summary>Is it on iOS or Android?</summary>
+    <p>Ilaequor is coming to mobile first. The launch platform is not finalized yet, so the best way to be sure you get in is to join the early-access list; everyone on it hears which platform opens first and when.</p>
+  </details>
+  <details open>
+    <summary>Is it free?</summary>
+    <p>Early access is free during the beta. Pricing after that is not set yet. Anyone who joins the list now will hear the details before anything changes, with no obligation to continue.</p>
+  </details>
+  <p><a href="/faq">Read all questions</a></p>
+</section>
+<section id="early-access">
+  <header>
+    <small>06 / Early access</small>
+    <h2>Be first in when early access <em>opens</em>.</h2>
+    <p>Ilaequor is in private beta. Join the list and you will hear when it opens and which platform launches first.</p>
+  </header>
+  <form>
+    <div>
+      <label for="email-cta">Email</label>
+      <input id="email-cta" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    </div>
+    <p>We only use this to email you about early access. No spam; unsubscribe anytime.</p>
+    <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
+    <button type="submit">Get early access</button>
+    <p>Free during the beta. No spam, and one click to leave.</p>
+  </form>
+</section>
+</main>
+<footer>
+  <section>
+    <p><strong>Ilaequor by Illucrum</strong></p>
+    <p>Tank-side dosing and testing for planted aquariums.</p>
+    <p>ill-AY-kwor</p>
+  </section>
+  <section>
+    <h5>Product</h5>
+    <ul>
+      <li><a href="/#how-it-works">How it works</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </section>
+  <section>
+    <h5>Company</h5>
+    <ul>
+      <li><a href="https://illucrum.com">Illucrum</a></li>
+    </ul>
+  </section>
+  <section>
+    <h5>Legal</h5>
+    <ul>
+      <li><a href="/legal/privacy">Privacy</a></li>
+      <li><a href="/legal/terms">Terms</a></li>
+      <li><a href="#" data-consent-open-prefs>Manage cookies</a></li>
+    </ul>
+  </section>
+  <section>
+    <h5>Contact</h5>
+    <ul>
+      <li><a href="mailto:szymon.kokot@illucrum.com">Email</a></li>
+    </ul>
+  </section>
+  <small>© Ilaequor by Illucrum 2026</small>
+</footer>
+
+<div class="ic-consent" hidden>
+  <div class="ic-consent__panel">
+    <p class="ic-consent__eyebrow">Cookies</p>
+    <p class="ic-consent__title">We use a couple of cookies</p>
+    <p class="ic-consent__body">We use cookies that are necessary for the site to work, and (only if you agree) Google Analytics to understand how visitors use the site. You can change your choice any time from "Manage cookies" in the footer. See our <a href="/legal/privacy">privacy policy</a> for details.</p>
+    <div class="ic-consent__actions">
+      <button type="button" class="ic-consent__btn" data-consent-accept>Accept analytics</button>
+      <button type="button" class="ic-consent__btn-ghost" data-consent-reject>Necessary only</button>
+      <button type="button" class="ic-consent__btn-ghost" data-consent-open-prefs>Manage</button>
+    </div>
+    <div class="ic-consent__prefs" hidden>
+      <div class="ic-consent__pref">
+        <label class="ic-consent__pref-label" for="consent-necessary">Necessary</label>
+        <input class="ic-consent__toggle" type="checkbox" id="consent-necessary" checked disabled>
+        <p class="ic-consent__pref-desc">Required for the site to function. Always on.</p>
+      </div>
+      <div class="ic-consent__pref">
+        <label class="ic-consent__pref-label" for="consent-analytics">Analytics</label>
+        <input class="ic-consent__toggle" type="checkbox" id="consent-analytics">
+        <p class="ic-consent__pref-desc">Helps us understand how visitors use the site (Google Analytics 4).</p>
+      </div>
+      <button type="button" class="ic-consent__btn" data-consent-save>Save preferences</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

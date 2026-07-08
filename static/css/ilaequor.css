@@ -1,0 +1,1724 @@
+/* ============================================================
+   ILAEQUOR — Tag-only stylesheet
+   ────────────────────────────────────────────────────────────
+   Visual language : Ilaequor brand (blue · Dubai font ·
+                     light-default).
+   Structural approach : Tag-only selectors. No classes on page
+                         elements. Only the cookie-consent banner
+                         uses classes (scoped under .ic-consent).
+   Theme switching : A <html data-theme="dark"> attribute (set by
+                     a small JS toggle) flips the CSS custom
+                     properties for the dark palette.
+
+   HTML CONVENTIONS THIS STYLESHEET ASSUMES
+   ──────────────────────────────────────────
+     <html data-theme="dark">  ← toggle class added by JS
+
+     <body>
+       <nav>                              top sticky nav
+         <a href="/"><img> Ilaequor</a>   logo (first <a> in nav)
+         <ul><li><a>...</a></li>...</ul>  nav links (desktop inline)
+         <button>Get in touch</button>    primary nav CTA
+       </nav>
+
+       <header>                           HERO (centered)
+         <small>eyebrow</small>
+         <h1>Headline <em>accent</em></h1>
+         <p>Lede copy...</p>
+         <nav>                            CTA pair (Email + WhatsApp)
+           <a href="mailto:...">Email</a>
+           <a href="https://wa.me/...">WhatsApp</a>
+         </nav>
+         <aside>                          optional meta card
+           <small>In the audit</small>
+           <dl>
+             <dt>Checkpoints</dt><dd>46</dd>
+           </dl>
+         </aside>
+       </header>
+
+       <main>
+         <section>
+           <header>                       section eyebrow + heading
+             <small>Services</small>
+             <h2>Heading <em>accent</em></h2>
+             <p>Lede...</p>
+           </header>
+           <ul>                           card grid
+             <li>
+               <span>01</span>            number badge
+               <h3>Title</h3>
+               <p>Body</p>
+               <a href="...">Learn more →</a>
+             </li>
+           </ul>
+           <nav>                          optional CTA pair at section level
+             <a href="mailto:...">Email</a>
+             <a href="https://wa.me/...">WhatsApp</a>
+           </nav>
+         </section>
+
+         <section>                        PROCESS
+           <header>...</header>
+           <ol><li><h3>...</h3><p>...</p></li></ol>
+         </section>
+
+         <section>                        STATS / FIGURES
+           <ul>
+             <li>
+               <article>
+                 <strong>46</strong>
+                 <p>label</p>
+               </article>
+             </li>
+           </ul>
+         </section>
+
+         <section>                        FAQ (no JS, native details)
+           <header>...</header>
+           <details><summary>Q</summary><p>A</p></details>
+         </section>
+
+         <section>                        PRICING TABLE
+           <header>...</header>
+           <table>
+             <thead><tr><th>...</th>...</tr></thead>
+             <tbody><tr><td>...</td>...</tr></tbody>
+             <tfoot><tr>
+               <td></td>
+               <td><a href="mailto:...">Buy Basic</a></td>
+               <td><a href="mailto:...">Buy Full</a></td>
+             </tr></tfoot>
+           </table>
+         </section>
+       </main>
+
+       <footer>
+         <section>
+           <img src="logo.svg" alt="Ilaequor">
+           <p>Tagline</p>
+         </section>
+         <section><h5>Services</h5><ul><li><a>...</a></li>...</ul></section>
+         ...
+         <small>© 2026 Illucrum. All rights reserved.</small>
+       </footer>
+     </body>
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Dubai:wght@300;400;500;700&display=swap");
+
+/* ─── 1. CUSTOM PROPERTIES ────────────────────────────────── */
+:root {
+  --green: #006bc9;
+  --green-dim: #0056a3;
+  --green-glow: rgba(0, 107, 201, 0.15);
+
+  /* Light (default) */
+  --bg: #f5f0f5;
+  --bg-alt: #efeaef;
+  --bg-nav: rgba(245, 240, 245, 0.92);
+  --surface: #ffffff;
+  --surface2: #f0f0eb;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #111111;
+  --text-muted: #555555;
+  --text-dim: #999999;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.1);
+
+  --font: "Dubai", "Inter", system-ui, sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+  --trans: 0.25s ease;
+
+  --gutter: clamp(1.25rem, 4vw, 1.5rem);
+  --maxw: 1100px;
+  --maxw-mid: 900px;
+  --maxw-narrow: 680px;
+  --section: clamp(3rem, 8vw, 5rem);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-alt: #111111;
+  --bg-nav: rgba(10, 10, 10, 0.88);
+  --surface: #111111;
+  --surface2: #161616;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #e8e8e8;
+  --text-muted: #888888;
+  --text-dim: #555555;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── 2. RESET ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ─── 3. BODY ───────────────────────────────────────────────── */
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  transition:
+    background var(--trans),
+    color var(--trans);
+}
+
+/* ─── 4. MEDIA ──────────────────────────────────────────────── */
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── 5. LINKS ──────────────────────────────────────────────── */
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition:
+    opacity var(--trans),
+    color var(--trans);
+}
+a:hover {
+  opacity: 0.8;
+}
+
+/* Inline anchors in body copy get a soft underline. */
+p a,
+li p a,
+dd a,
+td a {
+  border-bottom: 1px solid rgba(0, 201, 107, 0.3);
+  padding-bottom: 1px;
+  color: var(--green);
+}
+p a:hover,
+li p a:hover,
+dd a:hover,
+td a:hover {
+  opacity: 1;
+  border-bottom-color: var(--green);
+}
+
+/* ─── 6. TYPOGRAPHY ─────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  transition: color var(--trans);
+}
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+}
+h3 {
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  font-weight: 600;
+}
+h4 {
+  font-size: 0.95rem;
+}
+h5 {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+h6 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* <em> inside headings = green accent. */
+h1 em,
+h2 em,
+h3 em {
+  font-style: normal;
+  color: var(--green);
+}
+
+/* Body paragraphs. */
+p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  transition: color var(--trans);
+}
+
+/* Lede (first <p> after H1 / H2). */
+h1 + p,
+h2 + p {
+  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  max-width: 42rem;
+  margin-top: 1rem;
+}
+
+/* <small> = eyebrow label: uppercase, green, tracked. */
+small {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  margin-bottom: 0.6rem;
+}
+
+strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+em {
+  font-style: italic;
+}
+
+/* <mark> = recommended pill badge. */
+mark {
+  background: var(--green);
+  color: #000;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+code,
+kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: var(--surface2);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+ul + p,
+ol + p {
+  margin-top: 2rem;
+}
+
+/* ─── 7. LISTS ──────────────────────────────────────────────── */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ─── 8. DEFINITION LISTS ───────────────────────────────────── */
+dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.5rem;
+  row-gap: 0;
+}
+dt,
+dd {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  transition: border-color var(--trans);
+}
+dt {
+  color: var(--text-muted);
+}
+dd {
+  color: var(--text);
+  text-align: right;
+  font-weight: 500;
+}
+dl > dt:last-of-type,
+dl > dd:last-of-type {
+  border-bottom: 0;
+}
+
+/* ─── 9. TABLES ─────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 0.92rem;
+}
+thead th {
+  font-weight: 700;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid var(--green);
+  color: var(--text);
+  background: var(--surface);
+  vertical-align: bottom;
+}
+thead th:nth-child(n + 2) {
+  text-align: center;
+}
+tbody td,
+tfoot td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--text-muted);
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+}
+tbody td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+tbody td:nth-child(n + 2),
+tfoot td:nth-child(n + 2) {
+  text-align: center;
+}
+tbody tr:hover td {
+  background: var(--surface2);
+}
+tfoot td {
+  border-bottom: 0;
+  border-top: 2px solid var(--border);
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+/* Check / dash marks inside table cells. */
+tbody td:not(:first-child) {
+  /* ✓ and — are placed directly as text in the HTML */
+}
+
+/* ─── 10. DETAILS / SUMMARY (FAQ accordion, no JS) ──────────── */
+details {
+  max-width: var(--maxw-narrow);
+  margin: 0 auto 0.65rem;
+  border-bottom: 1px solid var(--border);
+  transition: border-color var(--trans);
+}
+summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color var(--trans);
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+/* Green chevron. */
+summary::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+  border-right: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.3s ease;
+}
+summary:hover {
+  color: var(--green);
+}
+details[open] summary {
+  color: var(--text);
+}
+details[open] summary::after {
+  transform: translateY(2px) rotate(225deg);
+}
+details > p,
+details > div,
+details > ul {
+  padding: 0 0 1.25rem;
+  max-width: none;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ─── 11. BUTTONS ───────────────────────────────────────────── */
+/*  <button>  = primary (green fill).
+    <a> directly after <button> = ghost / secondary.
+    Inside a nav pair these are overridden in section 17 below. */
+button {
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--green);
+  color: #000;
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    background var(--trans),
+    border-color var(--trans),
+    box-shadow var(--trans),
+    transform var(--trans);
+}
+button:hover {
+  background: var(--green-dim);
+  border-color: var(--green-dim);
+  box-shadow: 0 8px 24px rgba(0, 201, 107, 0.25);
+  transform: translateY(-2px);
+}
+button:active {
+  transform: translateY(0);
+}
+button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* Ghost secondary (an <a> directly after a <button>). */
+button + a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.75rem;
+  margin-left: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition:
+    border-color var(--trans),
+    color var(--trans),
+    transform var(--trans);
+}
+button + a:hover {
+  border-color: rgba(0, 201, 107, 0.4);
+  color: var(--text);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Nav CTA button is slimmer. */
+nav > button {
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+/* ─── 12. TOP NAVIGATION ─────────────────────────────────────── */
+/*  Sticky, blurred, hairline bottom border.
+    Mobile: <ul> wraps below on a second row (no JS required for
+    basic layout; JS hamburger optional for collapsing). */
+body > nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-nav);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.9rem var(--gutter);
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+}
+
+/* Logo lockup: first <a> in nav. */
+body > nav > a:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  opacity: 1;
+}
+body > nav > a:first-child:hover {
+  color: var(--text);
+  opacity: 1;
+}
+body > nav > a:first-child img {
+  height: 26px;
+  width: auto;
+}
+
+/* Dark / light logo swap.
+   Place two <img> tags inside the logo <a>:
+     <img class="logo-light" src="logo-dark.svg" alt="">
+     <img class="logo-dark"  src="logo-light.svg" alt="">
+   The correct one shows based on [data-theme]. */
+.logo-dark {
+  display: none;
+}
+.logo-light {
+  display: block;
+}
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+
+/* Nav link list. Mobile: full-width second row. */
+body > nav > ul {
+  order: 3;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+  transition: border-color var(--trans);
+  margin: 0;
+}
+body > nav > ul > li {
+  display: inline-flex;
+}
+body > nav > ul a,
+body > nav > ul button {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+body > nav > ul a:hover,
+body > nav > ul button:hover {
+  color: var(--text);
+  opacity: 1;
+}
+
+/* Desktop: link list becomes an inline middle column. */
+@media (min-width: 900px) {
+  body > nav > ul {
+    order: 0;
+    width: auto;
+    flex-wrap: nowrap;
+    padding-top: 0;
+    border-top: 0;
+    gap: 1.75rem;
+  }
+}
+
+/* Nav right cluster (theme toggle + CTA button). */
+body > nav > div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Theme-toggle button — icon-only square. */
+body > nav button[data-theme-toggle] {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--text-muted);
+  transition:
+    border-color var(--trans),
+    color var(--trans),
+    background var(--trans);
+  flex-shrink: 0;
+}
+body > nav button[data-theme-toggle]:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: var(--green-glow);
+  box-shadow: none;
+  transform: none;
+}
+/* Light default: show moon icon, hide sun. */
+body > nav button[data-theme-toggle] .icon-sun {
+  display: block;
+}
+body > nav button[data-theme-toggle] .icon-moon {
+  display: none;
+}
+[data-theme="dark"] body > nav button[data-theme-toggle] .icon-sun {
+  display: none;
+}
+[data-theme="dark"] body > nav button[data-theme-toggle] .icon-moon {
+  display: block;
+}
+
+/* ─── 13. HERO (body > header) ───────────────────────────────── */
+body > header {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 7rem var(--gutter) 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background grid (pure CSS, no element needed — drawn
+   on body > header::before). */
+body > header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 201, 107, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 201, 107, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 30%,
+    transparent 100%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--trans);
+}
+[data-theme="dark"] body > header::before {
+  opacity: 1;
+}
+
+/* All direct children sit above the grid. */
+body > header > * {
+  position: relative;
+  z-index: 1;
+}
+
+body > header > small {
+  animation: fadeUp 0.5s ease both;
+}
+body > header > h1 {
+  max-width: 18ch;
+  animation: fadeUp 0.5s 0.1s ease both;
+  margin-bottom: 1.25rem;
+}
+body > header > p {
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+
+/* Hero CTA pair (<nav> inside header) animated in. */
+body > header > nav {
+  animation: fadeUp 0.5s 0.3s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── 14. ASIDE (hero meta card) ─────────────────────────────── */
+aside {
+  width: 100%;
+  max-width: 32rem;
+  margin: 2.5rem auto 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 1.5rem 1.75rem;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+  animation: fadeUp 0.5s 0.4s ease both;
+}
+aside > small {
+  margin-bottom: 1rem;
+}
+
+/* ─── 15. MAIN + SECTIONS ─────────────────────────────────────── */
+main {
+  display: block;
+}
+
+main > section {
+  background: var(--bg);
+  padding: var(--section) var(--gutter);
+  transition: background var(--trans);
+}
+main > section:nth-of-type(even) {
+  background: var(--surface);
+}
+
+/* Constrain every direct child to content width. */
+main > section > * {
+  max-width: var(--maxw);
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Narrow override for FAQ / process content. */
+main > section > details,
+main > section > ol {
+  max-width: var(--maxw-narrow);
+}
+
+/* ─── 16. SECTION HEADERS (section > header) ─────────────────── */
+section > header {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--maxw);
+}
+section > header > p {
+  margin-top: 0.5rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── 17. CTA PAIR (section > nav / header > nav / article > nav) ─
+   Email + WhatsApp button pair.
+   Desktop: first <a> (Email) = primary green; second = ghost.
+   Mobile : second <a> (WhatsApp) = primary green; first = ghost.
+   Wrapper <nav> must NOT be body > nav. */
+section > nav,
+header > nav,
+article > nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+section > nav:first-child,
+header > nav:first-child,
+article > nav:first-child {
+  margin-top: 1.5rem;
+}
+
+section > nav > a,
+header > nav > a,
+article > nav > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--surface);
+  transition:
+    background var(--trans),
+    color var(--trans),
+    border-color var(--trans),
+    box-shadow var(--trans),
+    transform var(--trans);
+  opacity: 1;
+}
+section > nav > a:active,
+header > nav > a:active,
+article > nav > a:active {
+  transform: translateY(1px);
+}
+
+/* Desktop primary = first anchor (Email → green fill). */
+section > nav > a:first-child,
+header > nav > a:first-child,
+article > nav > a:first-child {
+  background: var(--green);
+  color: #000;
+  border-color: var(--green);
+}
+section > nav > a:first-child:hover,
+header > nav > a:first-child:hover,
+article > nav > a:first-child:hover {
+  background: var(--green-dim);
+  border-color: var(--green-dim);
+  color: #000;
+  box-shadow: 0 8px 24px rgba(0, 201, 107, 0.25);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Desktop ghost = second anchor (WhatsApp). */
+section > nav > a:last-child:hover,
+header > nav > a:last-child:hover,
+article > nav > a:last-child:hover {
+  border-color: rgba(0, 201, 107, 0.4);
+  color: var(--text);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Mobile (<768px): swap prominence. WhatsApp first + green. */
+@media (max-width: 767px) {
+  section > nav > a:last-child,
+  header > nav > a:last-child,
+  article > nav > a:last-child {
+    order: 1;
+    background: var(--green);
+    color: #000;
+    border-color: var(--green);
+  }
+  section > nav > a:last-child:hover,
+  header > nav > a:last-child:hover,
+  article > nav > a:last-child:hover {
+    background: var(--green-dim);
+    border-color: var(--green-dim);
+    color: #000;
+    box-shadow: 0 8px 24px rgba(0, 201, 107, 0.25);
+    opacity: 1;
+  }
+  section > nav > a:first-child,
+  header > nav > a:first-child,
+  article > nav > a:first-child {
+    order: 2;
+    background: var(--surface);
+    color: var(--text-muted);
+    border-color: var(--border);
+  }
+  section > nav > a:first-child:hover,
+  header > nav > a:first-child:hover,
+  article > nav > a:first-child:hover {
+    border-color: rgba(0, 201, 107, 0.4);
+    color: var(--text);
+    background: var(--surface);
+    box-shadow: none;
+    opacity: 1;
+  }
+}
+
+/* ─── 18. CARD GRID (section > ul) ───────────────────────────── */
+section > ul,
+section > ol ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 620px) {
+  section > ul,
+  section > ol ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  section > ul,
+  section > ol ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+section > ul > li,
+section > ol ul > li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--trans),
+    transform var(--trans),
+    background var(--trans),
+    box-shadow var(--trans);
+  position: relative;
+  overflow: hidden;
+}
+section > ul > li::before,
+section > ol ul > li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 201, 107, 0.05) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--trans);
+  pointer-events: none;
+}
+section > ul > li:hover,
+section > ol ul > li:hover {
+  border-color: rgba(0, 201, 107, 0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+section > ul > li:hover::before,
+section > ol ul > li:hover::before {
+  opacity: 1;
+}
+
+/* First <span> in a card = number badge. */
+section > ul > li > span:first-child,
+section > ol ul > li > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  background: rgba(0, 201, 107, 0.1);
+  color: var(--green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  align-self: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+section > ul > li > h3,
+section > ul > li > p,
+section > ol ul > li > h3,
+section > ol ul > li > p {
+  position: relative;
+  z-index: 1;
+}
+
+/* Card out-link. */
+section > ul > li > a,
+section > ol ul > li > a {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--green);
+  align-self: flex-start;
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+}
+section > ul > li > a:hover,
+section > ol ul > li > a:hover {
+  gap: 0.6rem;
+  opacity: 0.8;
+}
+
+/* ─── 19. PROCESS STEPS (section > ol) ───────────────────────── */
+section > ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: var(--maxw-narrow);
+}
+section > ol > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  transition: border-color var(--trans);
+}
+section > ol > li:last-child {
+  border-bottom: none;
+}
+
+/* Large faint step number (CSS counters). */
+section > ol {
+  counter-reset: step;
+}
+section > ol > li {
+  counter-increment: step;
+}
+section > ol > li::before {
+  content: counter(step, decimal-leading-zero);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--green);
+  opacity: 0.25;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  padding-top: 0.15rem;
+  font-family: var(--font);
+}
+section > ol > li > div {
+  width: 90%;
+}
+section > ol > li h3 {
+  color: var(--text);
+  vertical-align: middle;
+  line-height: 40px;
+}
+section > ol > li p {
+  font-size: 0.88rem;
+  grid-column: span 2;
+}
+
+section > p > small,
+header > p > small {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* ─── 20. STATS / FIGURES (<article>) ────────────────────────── */
+/*  Usage: wrap stat tiles in a section > ul, each li holds an article.
+    Or place articles directly in a grid container. */
+article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+}
+
+/* Large stat number. */
+article > strong,
+ul > li > strong {
+  font-family: var(--font);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--green);
+}
+/* Unit suffix in muted. */
+article > strong em,
+ul > li > strong em {
+  font-style: normal;
+  font-size: 0.55em;
+  color: var(--text-dim);
+}
+article > p {
+  max-width: 28ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+article > small {
+  margin-bottom: 0;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+}
+
+/* ─── 21. CTA BAND (a section used as a standalone call-to-action)
+   If a <section> contains only a header + nav pair (no card grid,
+   no table), it naturally becomes a centred CTA band. Add a green
+   glow via ::before. */
+main > section:has(> nav):not(:has(> ul)):not(:has(table)) {
+  position: relative;
+  overflow: hidden;
+}
+main > section:has(> nav):not(:has(> ul)):not(:has(table))::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 201, 107, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ─── 22. FOOTER ──────────────────────────────────────────────── */
+body > footer {
+  border-top: 1px solid var(--border);
+  padding: clamp(2.5rem, 5vw, 3.5rem) var(--gutter) 0;
+  background: var(--bg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 100%;
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+}
+
+/* Brand block (first section). */
+body > footer > section:first-of-type {
+  grid-column: 1 / -1;
+}
+body > footer > section:first-of-type img {
+  height: 26px;
+  width: auto;
+}
+body > footer > section:first-of-type p {
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  max-width: 280px;
+}
+
+/* Link columns. */
+body > footer h5 {
+  margin-bottom: 0.85rem;
+}
+body > footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+body > footer ul a {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: block;
+  opacity: 1;
+  width: 100%;
+}
+body > footer ul li {
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+body > footer ul a:hover {
+  color: var(--text);
+  opacity: 1;
+}
+body > footer > section > ul > li {
+  padding: 0;
+  border-bottom: 0;
+}
+
+/* Copyright strip (last child <small>). */
+body > footer > small {
+  grid-column: 1 / -1;
+  display: block;
+  text-align: center;
+  padding: 1.4rem 0;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-transform: none;
+  letter-spacing: normal;
+  transition: border-color var(--trans);
+}
+
+@media (min-width: 620px) {
+  body > footer {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+  body > footer > section:first-of-type {
+    grid-column: 1;
+  }
+}
+
+/* ─── 23. SCROLL REVEAL ───────────────────────────────────────── */
+/*  Add the [data-reveal] attribute to any element; JS adds
+    [data-reveal="visible"] when it enters the viewport. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+[data-reveal="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── 24. FOCUS STATES (a11y) ─────────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── 25. SELECTION ───────────────────────────────────────────── */
+::selection {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ─── 26. REDUCED MOTION ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── 27. LEGAL PAGES ─────────────────────────────────────────── */
+/*  A <main> that holds only prose (legal pages) gets comfortable
+    vertical rhythm applied. Wrap in <main class="legal"> or target
+    with a data attribute if you need to scope; here we use a
+    conservative descendant approach: long-form sections that
+    contain only headings + paragraphs (no ul grid / table). */
+main.legal {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 7rem var(--gutter) 5rem;
+}
+main.legal h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 0.5rem;
+}
+main.legal > p:first-of-type {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+main.legal h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 2.5rem 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+main.legal p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+main.legal ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  list-style: disc;
+}
+main.legal li {
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+main.legal a {
+  color: var(--green);
+  border-bottom: 1px solid rgba(0, 201, 107, 0.3);
+}
+main.legal a:hover {
+  opacity: 0.8;
+}
+
+/* ─── 28. ABOUT PAGE ──────────────────────────────────────────── */
+/*  Bio layout: photo on the left, text on the right (on wide screens). */
+main.about > section:first-of-type > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 700px) {
+  main.about > section:first-of-type > div {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+/* ─── 29. PRINT RESETS ────────────────────────────────────────── */
+@media print {
+  body > nav,
+  body > footer {
+    display: none;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* ─── 30. WAITLIST FORM (tag-only, section > form / header > form) ─
+   Structure this block assumes:
+     <form>
+       <div>                          field group
+         <label for="email-hero">Email</label>
+         <input id="email-hero" type="email" name="email" placeholder="you@example.com" required>
+         <p>inline error text (hidden unless invalid)</p>
+       </div>
+       <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
+       <button type="submit">Get early access</button>
+       <p>privacy / reassurance line</p>
+     </form>
+   Two forms exist on the home page (hero + final CTA) sharing this markup. */
+header > form,
+section > form {
+  width: 100%;
+  max-width: 30rem;
+  margin: 1.75rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeUp 0.5s 0.3s ease both;
+}
+
+header > form > div,
+section > form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+@media (min-width: 480px) {
+  header > form > div,
+  section > form > div {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+header > form label,
+section > form label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+header > form input[type="email"],
+section > form input[type="email"] {
+  flex: 1;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.85rem 1.1rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition:
+    border-color var(--trans),
+    box-shadow var(--trans),
+    background var(--trans);
+}
+header > form input[type="email"]::placeholder,
+section > form input[type="email"]::placeholder {
+  color: var(--text-dim);
+}
+header > form input[type="email"]:focus-visible,
+section > form input[type="email"]:focus-visible {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-glow);
+}
+header > form input[type="email"]:invalid[aria-invalid="true"],
+section > form input[type="email"]:invalid[aria-invalid="true"] {
+  border-color: #d64545;
+}
+
+header > form button[type="submit"],
+section > form button[type="submit"] {
+  min-height: 48px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Honeypot field: hidden from real visitors, still reachable by bots. */
+header > form input[name="website"],
+section > form input[name="website"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Inline error message, shown beside/below the field. */
+header > form div > p,
+section > form div > p {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  color: #d64545;
+}
+
+/* Privacy / reassurance line under the whole form. */
+header > form > p,
+section > form > p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  max-width: none;
+}
+
+/* Success state: form replaced by a single confirmation message. */
+header > form p[role="status"],
+section > form p[role="status"] {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+/* ============================================================
+   COOKIE CONSENT BANNER (class-scoped, from consent.css)
+   Only this component uses classes. All tokens match :root above.
+   ============================================================ */
+
+.ic-consent[hidden] {
+  display: none !important;
+}
+
+.ic-consent {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: var(--gutter, 1rem);
+  pointer-events: none;
+}
+.ic-consent__panel {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 720px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 3vw, 1.4rem);
+  font-family: var(--font);
+  color: var(--text);
+}
+.ic-consent__eyebrow {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+.ic-consent__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+.ic-consent__body {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  max-width: 62ch;
+}
+.ic-consent__body a {
+  color: var(--green);
+  border-bottom: 1px solid rgba(0, 201, 107, 0.3);
+  padding-bottom: 1px;
+  text-decoration: none;
+}
+.ic-consent__body a:hover {
+  opacity: 0.8;
+}
+
+.ic-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.ic-consent__btn,
+.ic-consent__btn-ghost {
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: #000;
+  transition:
+    background var(--trans),
+    color var(--trans),
+    border-color var(--trans);
+}
+.ic-consent__btn:hover {
+  background: var(--green-dim);
+  border-color: var(--green-dim);
+}
+.ic-consent__btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.ic-consent__btn-ghost:hover {
+  border-color: rgba(0, 201, 107, 0.4);
+  color: var(--text);
+}
+.ic-consent__btn:focus-visible,
+.ic-consent__btn-ghost:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.ic-consent__prefs {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.85rem;
+  display: grid;
+  gap: 0.65rem;
+}
+.ic-consent__prefs[hidden] {
+  display: none;
+}
+
+.ic-consent__pref {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: start;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.ic-consent__pref:last-of-type {
+  border-bottom: 0;
+}
+.ic-consent__pref-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.ic-consent__pref-desc {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.ic-consent__toggle {
+  width: 36px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: background var(--trans);
+  flex-shrink: 0;
+}
+.ic-consent__toggle::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  background: var(--bg);
+  border-radius: 50%;
+  transition: transform var(--trans);
+}
+.ic-consent__toggle:checked {
+  background: var(--green);
+  border-color: var(--green);
+}
+.ic-consent__toggle:checked::after {
+  transform: translateX(16px);
+}
+.ic-consent__toggle:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.ic-consent__toggle:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+@media (max-width: 540px) {
+  .ic-consent {
+    padding: 0.75rem;
+  }
+  .ic-consent__panel {
+    padding: 1rem;
+  }
+  .ic-consent__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .ic-consent__btn,
+  .ic-consent__btn-ghost {
+    width: 100%;
+  }
+}
