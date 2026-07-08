@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var LEAD_ENDPOINT = "https://api.ilaequor.com/lead/";
+  var LEAD_ENDPOINT = "https://api.ilaequor.com/lead";
 
   function showFieldError(input, errorEl) {
     input.setAttribute("aria-invalid", "true");
