@@ -24,6 +24,10 @@
     for (var j = 0; j < fields.length; j++) {
       fields[j].disabled = true;
     }
+
+    var button = form.querySelector("button[type='submit']");
+    var label = button ? button.getAttribute("data-success-label") : null;
+    button.textContent = label;
   }
 
   function bind(form) {

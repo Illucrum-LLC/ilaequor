@@ -516,6 +516,9 @@ button:hover {
 button:active {
   transform: translateY(0);
 }
+button:disabled {
+  background-color: var(--green-glow-2);
+}
 button:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
@@ -1475,6 +1478,10 @@ section > form button[type="submit"] {
   min-height: 48px;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+form > input:disabled {
+  background-color: inherit;
 }
 
 /* Honeypot field: hidden from real visitors, still reachable by bots. */
