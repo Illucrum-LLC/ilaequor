@@ -112,6 +112,8 @@
   --green: #006bc9;
   --green-dim: #0056a3;
   --green-glow: rgba(0, 107, 201, 0.15);
+  --green-glow-2: rgba(0, 107, 201, 0.3);
+  --green-glow-3: rgba(0, 107, 201, 0.05);
 
   /* Light (default) */
   --bg: #f5f0f5;
@@ -209,7 +211,7 @@ p a,
 li p a,
 dd a,
 td a {
-  border-bottom: 1px solid rgba(0, 201, 107, 0.3);
+  border-bottom: 1px solid var(--green-glow-2);
   padding-bottom: 1px;
   color: var(--green);
 }
@@ -508,7 +510,7 @@ button {
 button:hover {
   background: var(--green-dim);
   border-color: var(--green-dim);
-  box-shadow: 0 8px 24px rgba(0, 201, 107, 0.25);
+  box-shadow: 0 8px 24px var(--green-glow-2);
   transform: translateY(-2px);
 }
 button:active {
@@ -537,7 +539,7 @@ button + a {
     transform var(--trans);
 }
 button + a:hover {
-  border-color: rgba(0, 201, 107, 0.4);
+  border-color: var(--green-glow-2);
   color: var(--text);
   transform: translateY(-2px);
   opacity: 1;
@@ -716,8 +718,8 @@ body > header::before {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 201, 107, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 201, 107, 0.05) 1px, transparent 1px);
+    linear-gradient(var(--green-glow-3) 1px, transparent 1px),
+    linear-gradient(90deg, var(--green-glow-3) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(
     ellipse 80% 80% at 50% 50%,
@@ -895,7 +897,7 @@ article > nav > a:first-child:hover {
   background: var(--green-dim);
   border-color: var(--green-dim);
   color: #000;
-  box-shadow: 0 8px 24px rgba(0, 201, 107, 0.25);
+  box-shadow: 0 8px 24px var(--green-glow-2);
   transform: translateY(-2px);
   opacity: 1;
 }
@@ -904,7 +906,7 @@ article > nav > a:first-child:hover {
 section > nav > a:last-child:hover,
 header > nav > a:last-child:hover,
 article > nav > a:last-child:hover {
-  border-color: rgba(0, 201, 107, 0.4);
+  border-color: var(--green-glow-2);
   color: var(--text);
   transform: translateY(-2px);
   opacity: 1;
@@ -926,7 +928,7 @@ article > nav > a:last-child:hover {
     background: var(--green-dim);
     border-color: var(--green-dim);
     color: #000;
-    box-shadow: 0 8px 24px rgba(0, 201, 107, 0.25);
+    box-shadow: 0 8px 24px var(--green-glow-2);
     opacity: 1;
   }
   section > nav > a:first-child,
@@ -940,7 +942,7 @@ article > nav > a:last-child:hover {
   section > nav > a:first-child:hover,
   header > nav > a:first-child:hover,
   article > nav > a:first-child:hover {
-    border-color: rgba(0, 201, 107, 0.4);
+    border-color: var(--green-glow-2);
     color: var(--text);
     background: var(--surface);
     box-shadow: none;
@@ -994,7 +996,7 @@ section > ol ul > li::before {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 201, 107, 0.05) 0%,
+    var(--green-glow-3) 0%,
     transparent 60%
   );
   opacity: 0;
@@ -1003,7 +1005,7 @@ section > ol ul > li::before {
 }
 section > ul > li:hover,
 section > ol ul > li:hover {
-  border-color: rgba(0, 201, 107, 0.35);
+  border-color: var(--green-glow-2);
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
@@ -1021,7 +1023,7 @@ section > ol ul > li > span:first-child {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 6px;
-  background: rgba(0, 201, 107, 0.1);
+  background: var(--green-glow-3);
   color: var(--green);
   font-size: 0.85rem;
   font-weight: 700;
@@ -1186,7 +1188,7 @@ main > section:has(> nav):not(:has(> ul)):not(:has(table))::after {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(0, 201, 107, 0.08) 0%,
+    var(--green-glow-3) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -1360,7 +1362,7 @@ main.legal li {
 }
 main.legal a {
   color: var(--green);
-  border-bottom: 1px solid rgba(0, 201, 107, 0.3);
+  border-bottom: 1px solid var(--green-glow-2);
 }
 main.legal a:hover {
   opacity: 0.8;
@@ -1400,15 +1402,11 @@ main.about > section:first-of-type > div {
          <input id="email-hero" type="email" name="email" placeholder="you@example.com" required>
          <p>inline error text (hidden unless invalid)</p>
        </div>
-       <div>                          consent field group
-         <input id="consent-hero" type="checkbox" name="consent" required>
-         <label for="consent-hero">consent copy, with a link to /legal/privacy</label>
-       </div>
        <input type="text" name="website" tabindex="-1" aria-hidden="true" autocomplete="off">
-       <button type="submit">Get development updates</button>
+       <button type="submit">Get early access</button>
        <p>privacy / reassurance line</p>
      </form>
-   Three forms share this markup: home hero, home final CTA, FAQ CTA. */
+   Two forms exist on the home page (hero + final CTA) sharing this markup. */
 header > form,
 section > form {
   width: 100%;
@@ -1616,7 +1614,7 @@ section > form p[role="status"] {
 }
 .ic-consent__body a {
   color: var(--green);
-  border-bottom: 1px solid rgba(0, 201, 107, 0.3);
+  border-bottom: 1px solid var(--green-glow-2);
   padding-bottom: 1px;
   text-decoration: none;
 }
@@ -1662,7 +1660,7 @@ section > form p[role="status"] {
   border-color: var(--border);
 }
 .ic-consent__btn-ghost:hover {
-  border-color: rgba(0, 201, 107, 0.4);
+  border-color: var(--green-glow-2);
   color: var(--text);
 }
 .ic-consent__btn:focus-visible,
